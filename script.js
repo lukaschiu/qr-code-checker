@@ -88,11 +88,10 @@ async function openInfo(decodedText) {
         // Log the request being sent
         console.log("Sending request to backend with URL:", decodedText);
         
-        // Send URL to backend with updated CORS settings
+        // Send URL to backend
         const response = await fetch('http://localhost:3000/scan', {
             method: 'POST',
-            mode: 'cors', // Important for CORS
-            credentials: 'omit', // Important for CORS
+            mode: 'cors',
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
@@ -110,9 +109,17 @@ async function openInfo(decodedText) {
         
         const data = await response.json();
         console.log("Received data from server:", data);
-        
-        // Rest of your result display code...
-        // [Previous display code remains the same]
+
+        // Display the results
+        resultsDiv.innerHTML = `
+            <h2>Scan Results</h2>
+            <div class="result-content">
+                <p><strong>Status:</strong> ${data.status || "Unknown"}</p>
+                <p><strong>Threat Level:</strong> ${data.threat_level || "Not available"}</p>
+                <p><strong>Details:</strong> ${data.details || "No further details available"}</p>
+            </div>
+            <button onclick="location.reload()" class="scan-again-button">Scan Again</button>
+        `;
         
     } catch (error) {
         console.error('Detailed error:', error);
