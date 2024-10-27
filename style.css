@@ -1,0 +1,50 @@
+html {
+  height: 100%;
+  width: 100%;
+  background-color: darkgray;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: center;
+}
+
+.row {
+  flex-direction: row;
+}
+.column {
+  flex-direction: column;
+}
+
+.camera-button {
+  margin-top: 2vh;
+  padding: 1vh;
+  font-size: 3vh;
+  color: whitesmoke;
+  background-color: rgb(88, 24, 69);
+  border: none;
+  border-radius: 1vh;
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+.camera-button:hover {
+  background-color: rgb(144, 12, 63);
+  color: whitesmoke;
+  box-shadow: 5px 5px rgb(30, 30, 30);
+}
+
+.camera-button:active {
+  opacity: 0%;
+}
+
+p {
+  font-family: Helvetica, sans-serif;
+  text-align: center;
+  font-size: 4vh;
+  margin: 1vh;
+}
+
+.title-image {
+  width: auto;
+  height: 5vh;
+}
