@@ -89,11 +89,11 @@ def analyze_results(result: Dict[Any, Any]) -> Dict[Any, Any]:
 
     # Calculate percentages
     percentages = {
-        'harmless': (stats['harmless'] / count) * 100,
-        'undetected': (stats['undetected'] / count) * 100,
-        'suspicious': (stats['suspicious'] / count) * 100,
-        'malicious': (stats['malicious'] / count) * 100,
-        'timeout': (stats['timeout'] / count) * 100
+        'harmless': round((stats['harmless'] / count) * 100),
+        'undetected': (round(stats['undetected'] / count) * 100),
+        'suspicious': round((stats['suspicious'] / count) * 100),
+        'malicious': round((stats['malicious'] / count) * 100),
+        'timeout': round((stats['timeout'] / count) * 100)
     }
 
     # Calculate safety score

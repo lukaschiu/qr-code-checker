@@ -2,6 +2,7 @@ const html5QrCode = new Html5Qrcode("reader");
 let devices;
 var cameraId;
 var i = 0;
+
 function turnOnScan() {
     Html5Qrcode.getCameras().then(availableDevices => {
         devices = availableDevices;  // Store devices globally
@@ -14,26 +15,24 @@ function turnOnScan() {
                     qrbox: { width: 150, height: 150 }
                 },
                 (decodedText, decodedResult) => {
-                    //Used to Debug to make sure link opens
-                    //window.open(decodedText, '_blank').focus();
+                    // Pause QR code scanning
                     html5QrCode.pause(true);
                     console.log("QR code scan successful");
-                    setTimeout(function(){
+                    setTimeout(function() {
                         html5QrCode.stop();
-                        openInfo(decodedText);
+                        openInfo(decodedText);  // Call openInfo function with decoded URL
                     }, 1400);
-
                 },
                 (errorMessage) => {
-
-                })
-                .catch((err) => {
-
-                });
-
+                    // Error handling (optional)
+                    console.error(errorMessage);
+                }
+            ).catch((err) => {
+                console.error("Failed to start camera:", err);
+            });
         }
     }).catch(err => {
-        // handle err
+        console.error("Error getting cameras:", err);
     });
 }
 
@@ -43,9 +42,8 @@ async function toggleButton() {
     turnOnScan();
     
     setTimeout(function() {
-        button.style.display = "none";;
+        button.style.display = "none";
     }, 1400);
-
 }
 
 function changeCamera() {
@@ -60,9 +58,9 @@ function changeCamera() {
             (decodedText, decodedResult) => {
                 html5QrCode.pause(true);
                 console.log("QR code scan successful");
-                setTimeout(function(){
+                setTimeout(function() {
                     html5QrCode.stop();
-                    openInfo(decodedText);
+                    openInfo(decodedText);  // Call openInfo function with decoded URL
                 }, 1400);
             },
             (errorMessage) => {
@@ -110,13 +108,16 @@ async function openInfo(decodedText) {
         const data = await response.json();
         console.log("Received data from server:", data);
 
-        // Display the results
+        // Display the results with the specified fields
         resultsDiv.innerHTML = `
             <h2>Scan Results</h2>
             <div class="result-content">
-                <p><strong>Status:</strong> ${data.status || "Unknown"}</p>
-                <p><strong>Threat Level:</strong> ${data.threat_level || "Not available"}</p>
-                <p><strong>Details:</strong> ${data.details || "No further details available"}</p>
+                <p><strong>Status Message:</strong> ${data.status_message || "N/A"}</p>
+                <p><strong>Safety Score:</strong> ${data.safety_score || "N/A"}</p>
+                <p><strong>Percentages:</strong> ${data.percentages ? JSON.stringify(data.percentages) : "N/A"}</p>
+                <p><strong>Raw Stats:</strong> ${data.raw_stats ? JSON.stringify(data.raw_stats) : "N/A"}</p>
+                <p><strong>Total Scanners:</strong> ${data.total_scanners || "N/A"}</p>
+                <p><strong>Status:</strong> ${data.status || "N/A"}</p>
             </div>
             <button onclick="location.reload()" class="scan-again-button">Scan Again</button>
         `;
