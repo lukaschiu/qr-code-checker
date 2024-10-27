@@ -90,7 +90,7 @@ def analyze_results(result: Dict[Any, Any]) -> Dict[Any, Any]:
     # Calculate percentages
     percentages = {
         'harmless': round((stats['harmless'] / count) * 100),
-        'undetected': (round(stats['undetected'] / count) * 100),
+        'undetected': round((stats['undetected'] / count) * 100),
         'suspicious': round((stats['suspicious'] / count) * 100),
         'malicious': round((stats['malicious'] / count) * 100),
         'timeout': round((stats['timeout'] / count) * 100)
@@ -156,4 +156,4 @@ def check(url):
 
 
 
-check('youtube.com')
+check('replit.com')
