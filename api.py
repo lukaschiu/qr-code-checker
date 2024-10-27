@@ -105,7 +105,7 @@ def analyze_results(result: Dict[Any, Any]) -> Dict[Any, Any]:
         'timeout': -0.1
     }
 
-    safety_score = sum(percentages[key] * weights[key] for key in percentages)
+    safety_score = round(sum(percentages[key] * weights[key] for key in percentages))
 
     status_message = ""
     if 80 <= safety_score <= 100:
