@@ -135,12 +135,12 @@ async function openInfo(decodedText) {
                 percentagesList = '<p>N/A</p>';
             }
             
-            let rawStatsList = '';
-            if (data.raw_stats) {
-                rawStatsList = '<ul>' + Object.entries(data.raw_stats).map(([key, value]) => `<li><strong>${key}:</strong> ${value}</li>`).join('') + '</ul>';
-            } else {
-                rawStatsList = '<p>N/A</p>';
-            }
+            // let rawStatsList = '';
+            // if (data.raw_stats) {
+            //     rawStatsList = '<ul>' + Object.entries(data.raw_stats).map(([key, value]) => `<li><strong>${key}:</strong> ${value}</li>`).join('') + '</ul>';
+            // } else {
+            //     rawStatsList = '<p>N/A</p>';
+            // }
             
             // Display the additional information
             document.getElementById('additionalInfo').innerHTML = `
@@ -148,7 +148,7 @@ async function openInfo(decodedText) {
                 <div class="flex-container">
                     <div class="column">
                         <h3><strong>Percentages:</strong>${percentagesList}</h3>
-                        <h3><strong>Raw Stats:</strong>${rawStatsList}</h3>
+                        <!--<h3><strong>Raw Stats:</strong>${rawStatsList}</h3>-->
                         <h3><strong>Total Scanners:</strong> ${data.total_scanners || "N/A"}</h3>
                         <h3><strong>Status:</strong> ${data.status || "N/A"}</h3>
                     </div>

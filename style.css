@@ -46,6 +46,7 @@ p {
 }
 
 .title-image {
+  margin-bottom: 1vh;
   width: auto;
   height: 7vh;
 }
