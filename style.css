@@ -1,7 +1,7 @@
 html {
   height: 100%;
   width: 100%;
-  background-color: darkgray;
+  background-color: whitesmoke;
 }
 
 .flex-container {
@@ -22,14 +22,14 @@ html {
   padding: 1vh;
   font-size: 3vh;
   color: whitesmoke;
-  background-color: rgb(88, 24, 69);
+  background-color: rgb(70, 70, 255);
   border: none;
   border-radius: 1vh;
   transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
 }
 
 .camera-button:hover {
-  background-color: rgb(144, 12, 63);
+  background-color: rgb(32, 32, 254);
   color: whitesmoke;
   box-shadow: 5px 5px rgb(30, 30, 30);
 }
@@ -153,7 +153,7 @@ p {
   margin-top: 20px;
   padding: 20px;
   border-radius: 8px;
-  background-color: darkgray;
+  background-color: whitesmoke;
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
