@@ -135,12 +135,12 @@ async function openInfo(decodedText) {
                 percentagesList = '<p>N/A</p>';
             }
             
-            // let rawStatsList = '';
-            // if (data.raw_stats) {
-            //     rawStatsList = '<ul>' + Object.entries(data.raw_stats).map(([key, value]) => `<li><strong>${key}:</strong> ${value}</li>`).join('') + '</ul>';
-            // } else {
-            //     rawStatsList = '<p>N/A</p>';
-            // }
+            let rawStatsList = '';
+            if (data.raw_stats) {
+                rawStatsList = '<ul>' + Object.entries(data.raw_stats).map(([key, value]) => `<li><strong>${key}:</strong> ${value}</li>`).join('') + '</ul>';
+            } else {
+                rawStatsList = '<p>N/A</p>';
+            }
             
             // Display the additional information
             document.getElementById('additionalInfo').innerHTML = `
