@@ -7,6 +7,7 @@ html {
 .flex-container {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .row {
@@ -40,11 +41,144 @@ html {
 p {
   font-family: Helvetica, sans-serif;
   text-align: center;
-  font-size: 4vh;
+  font-size: 1vh;
   margin: 1vh;
 }
 
 .title-image {
   width: auto;
-  height: 5vh;
+  height: 7vh;
+}
+
+.credits{
+  font-size: 3vh;
+  margin-top: 4vh;
+}
+
+/* Dropdown */
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #2980B9;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+.show {display: block;}
+
+
+/* FROM HEAD OF INDEX.HTML */
+.scan-results {
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: darkgray;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.result-content {
+    text-align: left;
+    margin: 15px 0;
+}
+
+.status-message {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.scan-again-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.scan-again-button:hover {
+    background-color: #45a049;
+}
+
+/* Loader styles */
+.loader {
+    border: 4px solid darkgray;
+    border-radius: 50%;
+    border-top: 4px solid #3498db;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+
+
+
+
+
+
+
+.scan-results {
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #f5f5f5;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.result-content {
+  text-align: left;
+  margin: 15px 0;
+}
+
+.status-message {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.scan-again-button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+.scan-again-button:hover {
+  background-color: #45a049;
 }

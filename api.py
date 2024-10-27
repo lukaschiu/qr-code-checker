@@ -107,8 +107,20 @@ def analyze_results(result: Dict[Any, Any]) -> Dict[Any, Any]:
 
     safety_score = sum(percentages[key] * weights[key] for key in percentages)
 
+    status_message = ""
+    if 80 <= safety_score <= 100:
+            status_message = "Very Safe"
+    elif 70 <= safety_score < 80:
+            status_message = "Safe"
+    elif 50 <= safety_score < 70:
+            status_message = "Caution"
+    elif 20 <= safety_score < 50:
+            status_message = "Unsafe"
+    else:
+            status_message = "Very Unsafe"
 
     return {
+        'status_message': status_message,
         'safety_score': safety_score,
         'percentages': percentages,
         'raw_stats': stats,

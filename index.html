@@ -1,35 +1,53 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <meta name="description" content="A website to help you check if a URL from a QR code is safe or not">
-  <title>QR Code Checker</title>
-  <link href="style.css" rel="stylesheet" type="text/css" />
-
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="A website to help you check if a URL from a QR code is safe or not">
+    <title>QR Code Checker</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
-  <div class="flex-container">
-    <div class="column">
-      <img src="./images/pagetitle.png" class="title-image">
-      <div id="reader" width="600px"></div>
-      <div class="flex-container">
-        <button id="cameraButton" onclick="toggleButton()" class="camera-button">Start Scan</button>
-      </div>
+    <!-- Main Container -->
+    <div class="flex-container">
+        <div class="column">
+            <img src="./images/pagetitle.png" class="title-image">
+            <div id="reader" width="600px"></div>
+            <div class="flex-container">
+                <button id="cameraButton" onclick="toggleButton()" class="camera-button">Start Scan</button>
+            </div>
+            
+            <!-- Results Section -->
+            <div id="scanResults" class="scan-results" style="display: none;">
+                <h2>Scan Results</h2>
+                <div class="result-content">
+                    <p id="urlText"></p>
+                    <p id="statusMessage" class="status-message"></p>
+                    <p id="safetyScore"></p>
+                    <div id="percentages"></div>
+                </div>
+                <button onclick="location.reload()" class="scan-again-button">Scan Again</button>
+            </div>
+        </div>
     </div>
-    <div id="info">
-      <p hidden> 
-        
-      </p>
-    </div>
-  </div>
-  <script src="https://unpkg.com/html5-qrcode" type="text/javascript">      </script>
-  <script src="script.js"></script>
-  <div>
-    
-  </div>
-</body>
 
+    <!-- Camera Change -->
+    <div class="flex-container">
+          <button onclick="changeCamera()" class="camera-button">Change Camera</button>
+          </div>
+  </div>
+
+    <!-- Credits -->
+    <div class="flex-container">
+        <p class="credits">Made by Cardin, Faraj, and Lukas.</p>
+    </div>
+    <div>
+        <p class="credits" style="margin-top: 1vh;">Hack SoDA 2024</p>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+    <script src="script.js"></script>
+</body>
 </html>
