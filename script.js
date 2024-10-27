@@ -112,8 +112,11 @@ async function openInfo(decodedText) {
         resultsDiv.innerHTML = `
             <h1>Scan Results</h1>
             <div class="result-content">
-                <h3><strong>Status Message:</strong> ${data.status_message || "N/A"}</h3>
-                <h3><strong>Safety Score:</strong> ${data.safety_score || "N/A"}</h3>
+                <h4><strong>QR Code URL:</strong> ${decodedText || "N/A"}</h4>
+                <div class="link-box">
+                    <h3><strong>Status Message:</strong> ${data.status_message || "N/A"}</h3>
+                    <h3><strong>Safety Score:</strong> ${data.safety_score || "N/A"}</h3>
+                </div>
                 <div id="additionalInfo" style="display: none;"></div>
             </div>
             <div class="flex-container">
@@ -144,7 +147,8 @@ async function openInfo(decodedText) {
             
             // Display the additional information
             document.getElementById('additionalInfo').innerHTML = `
-                <h3>Additional Details</h3>
+                <hr>
+                <h2>Additional Details</h2>
                 <div class="flex-container">
                     <div class="column">
                         <h3><strong>Percentages:</strong>${percentagesList}</h3>
