@@ -56,5 +56,5 @@ async function toggleButton() {
 }
 
 async function openInfo(decodedText) {
-
+    
 }
