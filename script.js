@@ -110,7 +110,7 @@ async function openInfo(decodedText) {
 
         // Display the results with the specified fields
         resultsDiv.innerHTML = `
-            <h2>Scan Results</h2>
+            <h3>Scan Results</h3>
             <div class="result-content">
                 <p><strong>Status Message:</strong> ${data.status_message || "N/A"}</p>
                 <p><strong>Safety Score:</strong> ${data.safety_score || "N/A"}</p>
@@ -120,6 +120,7 @@ async function openInfo(decodedText) {
                 <p><strong>Status:</strong> ${data.status || "N/A"}</p>
             </div>
             <button onclick="location.reload()" class="scan-again-button">Scan Again</button>
+            <button onclick="openInNewTab('decodedText')" class="scan-again-button">Open Link</button>
         `;
         
     } catch (error) {
