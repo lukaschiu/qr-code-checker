@@ -81,7 +81,7 @@ async function openInfo(decodedText) {
         // Show loading state
         const resultsDiv = document.getElementById('scanResults');
         resultsDiv.style.display = 'block';
-        resultsDiv.innerHTML = '<h2>Analyzing URL...</h2><p>Please wait, this may take a few moments.</p><div class="loader"></div>';
+        resultsDiv.innerHTML = '<h2>Analyzing URL...</h2><h2>Please wait, this may take a few moments.</h2><div class="loader"></div>';
         
         // Log the request being sent
         console.log("Sending request to backend with URL:", decodedText);
@@ -108,21 +108,51 @@ async function openInfo(decodedText) {
         const data = await response.json();
         console.log("Received data from server:", data);
 
-        // Display the results with the specified fields
+        // Display the initial results
         resultsDiv.innerHTML = `
-            <h3>Scan Results</h3>
+            <h1>Scan Results</h1>
             <div class="result-content">
-                <p><strong>Status Message:</strong> ${data.status_message || "N/A"}</p>
-                <p><strong>Safety Score:</strong> ${data.safety_score || "N/A"}</p>
-                <p><strong>Percentages:</strong> ${data.percentages ? JSON.stringify(data.percentages) : "N/A"}</p>
-                <p><strong>Raw Stats:</strong> ${data.raw_stats ? JSON.stringify(data.raw_stats) : "N/A"}</p>
+                <h3><strong>Status Message:</strong> ${data.status_message || "N/A"}</h3>
+                <h3><strong>Safety Score:</strong> ${data.safety_score || "N/A"}</h3>
+                <div id="additionalInfo" style="display: none;"></div>
+            </div>
+            <div class="flex-container">
+                <button id="analysisButton" class="camera-button">Analysis</button>
+                <button onclick="location.reload()" class="camera-button">Scan Again</button>
+                <a href="${decodedText}" target="_blank">
+                    <button class="camera-button">Open Link</button>
+                </a>
+            </div>
+        `;
+
+        // Add event listener for the Analysis button
+        document.getElementById('analysisButton').addEventListener('click', () => {
+            // Prepare the additional information as a list
+            let percentagesList = '';
+            if (data.percentages) {
+                percentagesList = '<ul>' + Object.entries(data.percentages).map(([key, value]) => `<li><strong>${key}:</strong> ${value}</li>`).join('') + '</ul>';
+            } else {
+                percentagesList = '<p>N/A</p>';
+            }
+            
+            let rawStatsList = '';
+            if (data.raw_stats) {
+                rawStatsList = '<ul>' + Object.entries(data.raw_stats).map(([key, value]) => `<li><strong>${key}:</strong> ${value}</li>`).join('') + '</ul>';
+            } else {
+                rawStatsList = '<p>N/A</p>';
+            }
+            
+            // Display the additional information
+            document.getElementById('additionalInfo').innerHTML = `
+                <h4>Additional Details</h4>
+                <p><strong>Percentages:</strong>${percentagesList}</p>
+                <p><strong>Raw Stats:</strong>${rawStatsList}</p>
                 <p><strong>Total Scanners:</strong> ${data.total_scanners || "N/A"}</p>
                 <p><strong>Status:</strong> ${data.status || "N/A"}</p>
-            </div>
-            <button onclick="location.reload()" class="scan-again-button">Scan Again</button>
-            <button onclick="openInNewTab('decodedText')" class="scan-again-button">Open Link</button>
-        `;
-        
+            `;
+            document.getElementById('additionalInfo').style.display = 'block'; // Show the additional info
+        });
+
     } catch (error) {
         console.error('Detailed error:', error);
         document.getElementById('scanResults').innerHTML = `
