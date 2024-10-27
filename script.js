@@ -81,7 +81,7 @@ async function openInfo(decodedText) {
         // Show loading state
         const resultsDiv = document.getElementById('scanResults');
         resultsDiv.style.display = 'block';
-        resultsDiv.innerHTML = '<h2>Analyzing URL...</h2><h2>Please wait, this may take a few moments.</h2><div class="loader"></div>';
+        resultsDiv.innerHTML = '<h2>Analyzing URL...</h2><h3>Please wait, this may take a few moments.</h3><div class="loader"></div>';
         
         // Log the request being sent
         console.log("Sending request to backend with URL:", decodedText);
@@ -144,11 +144,15 @@ async function openInfo(decodedText) {
             
             // Display the additional information
             document.getElementById('additionalInfo').innerHTML = `
-                <h4>Additional Details</h4>
-                <p><strong>Percentages:</strong>${percentagesList}</p>
-                <p><strong>Raw Stats:</strong>${rawStatsList}</p>
-                <p><strong>Total Scanners:</strong> ${data.total_scanners || "N/A"}</p>
-                <p><strong>Status:</strong> ${data.status || "N/A"}</p>
+                <h3>Additional Details</h3>
+                <div class="flex-container">
+                    <div class="column">
+                        <h3><strong>Percentages:</strong>${percentagesList}</h3>
+                        <h3><strong>Raw Stats:</strong>${rawStatsList}</h3>
+                        <h3><strong>Total Scanners:</strong> ${data.total_scanners || "N/A"}</h3>
+                        <h3><strong>Status:</strong> ${data.status || "N/A"}</h3>
+                    </div>
+                </div>
             `;
             document.getElementById('additionalInfo').style.display = 'block'; // Show the additional info
         });
@@ -157,9 +161,9 @@ async function openInfo(decodedText) {
         console.error('Detailed error:', error);
         document.getElementById('scanResults').innerHTML = `
             <h2>Error</h2>
-            <p>There was an error analyzing the URL: ${error.message}</p>
-            <p>Please check the console for more details.</p>
-            <button onclick="location.reload()" class="scan-again-button">Scan Again</button>
+            <h3>There was an error analyzing the URL: ${error.message}</h3>
+            <h3>Please check the console for more details.</h3>
+            <button onclick="location.reload()" class="camera-button">Scan Again</button>
         `;
     }
 }

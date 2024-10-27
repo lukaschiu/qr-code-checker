@@ -99,7 +99,7 @@ def analyze_results(result: Dict[Any, Any]) -> Dict[Any, Any]:
     # Calculate safety score
     weights = {
         'harmless': 1,
-        'undetected': 0.3,
+        'undetected': 0.5,
         'suspicious': -0.8,
         'malicious': -1,
         'timeout': -0.1
